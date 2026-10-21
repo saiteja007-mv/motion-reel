@@ -15,7 +15,8 @@ from earshot.forge import bank
 SR, DUR = 48000, 12.0  # DUR = film length in seconds
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# (time s, bank id, align on "onset" or "peak", gain dB, render kwargs). Example cues: replace with yours.
+# (time s, bank id or .wav path, align on "onset" or "peak", gain dB, render kwargs). Example cues: replace with yours.
+# A voiceover line from scripts/phonon_say.py goes in as e.g. (1.20, 'vo/01.wav', 'onset', 0, {}).
 CUES = [
     (0.30, 'fit/land.light/finger_phone', 'onset', -6, {}),                # first text fragment lands
     (2.00, 'whoosh_fast/crisp', 'peak', -8, {'dur': 0.7, 'apex': 0.35}),   # scene handoff
@@ -26,10 +27,14 @@ CUES = [
 
 mix = np.zeros((int(SR * DUR), 2), dtype=np.float64)
 for seed, (t, sid, align, gain, kw) in enumerate(CUES):
-    y, meta = bank.render(sid, seed=seed + 1, **kw)
+    if sid.endswith('.wav'):  # a file such as a voiceover line, path relative to this script, placed from sample 0
+        y, sr = sf.read(os.path.join(HERE, sid))
+        meta = {'sr': sr, 'onset_s': 0.0, 'peak_s': 0.0}
+    else:
+        y, meta = bank.render(sid, seed=seed + 1, **kw)
     sr = meta.get('sr', SR)
     if sr != SR:
-        raise SystemExit(f'{sid}: sample rate {sr}, expected {SR}')
+        raise SystemExit(f'{sid}: sample rate {sr}, expected {SR} (render voiceover with --rate {SR})')
     y = np.asarray(y, dtype=np.float64)
     if y.ndim == 1:
         y = np.stack([y, y], axis=1)

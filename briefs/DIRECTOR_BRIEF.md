@@ -12,6 +12,7 @@ Treat this as a multi-step production with gates. Don't rush to a final render.
 - Look: [a look name from the brand file]
 - Engine: [HyperFrames | cinetic (Remotion) | cinetic (HyperFrames) | video-shotcraft (Remotion)]
 - Audio: [earshot kit preset calm | crisp | minimal] + [no music | supplied ./audio/track.wav | synthesized]
+- Voiceover: [none | Phonon 31M, voice <name>, seed <n> | recorded ./audio/vo.wav]. VO lines go in "Text on screen" with their timing
 - Delivery: [MP4 master | transparent overlay .mov for an editor | both]
 
 ## References and inputs

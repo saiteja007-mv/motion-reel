@@ -14,7 +14,8 @@ Read in this order: AGENTS.md, brand/BRAND.md (create it from brand/BRAND.templa
 - [scripts/beats.py](scripts/beats.py): beat grid of a music track as JSON (bpm, beats, downbeats, hits)
 - [scripts/qa-sheets.ps1](scripts/qa-sheets.ps1): contact, phone-size and fast-moment sheets for critique (PowerShell)
 - [scripts/qa-sheets.sh](scripts/qa-sheets.sh): same, bash
-- [templates/score.py](templates/score.py): place earshot takes on cue times, write score.wav
+- [scripts/phonon_say.py](scripts/phonon_say.py): local voiceover with Phonon (31M Apache-2.0 only by default; 40M is non-commercial)
+- [templates/score.py](templates/score.py): place earshot takes and voiceover WAVs on cue times, write score.wav
 - [prompts/critique-pass.txt](prompts/critique-pass.txt): scoring prompt; stop at 8+ on every score or after 3 rounds
 
 ## Optional

@@ -40,7 +40,10 @@ without being repeated in a prompt. To start a new film, use the `motion-reel` s
 - Supplied music: measure it first with `scripts/beats.py` into `beats.json`. Cut on beats, put big
   moments on downbeats.
 - Restraint: one soft sound per text fragment, one clean hit on the logo lockup, no risers or rising pitch.
-- Master: -14 LUFS with music, -18 LUFS effects only, true peak <= -1 dBTP.
+- Voiceover: Phonon via `scripts/phonon_say.py`, one 48 kHz WAV per line with a fixed voice and seed. Only the
+  default Phonon 31M (Apache-2.0) for monetised films; the 40M models are CC BY-NC 4.0. Picture is timed to the
+  measured lines. No effects under spoken words; duck music ~8-10 dB under the voice.
+- Master: -14 LUFS with music or voiceover, -18 LUFS effects only, true peak <= -1 dBTP.
 - Use earshot as a CLI only. Registered as an MCP server it loads its models into every session.
 
 ## Loop before showing anything
@@ -69,6 +72,7 @@ without being repeated in a prompt. To start a new film, use the `motion-reel` s
 | `prompts/critique-pass.txt` | The scoring prompt for the critique loop |
 | `scripts/beats.py` | Beat grid of a music track (bpm, beats, downbeats, hits) |
 | `scripts/qa-sheets.ps1`, `scripts/qa-sheets.sh` | Contact sheet, phone-size sheet, fast-moment strip, loop check |
-| `templates/score.py` | Places earshot takes on cue times and writes `score.wav` |
+| `scripts/phonon_say.py` | Local voiceover with Phonon; refuses non-commercial models by default |
+| `templates/score.py` | Places earshot takes and voiceover WAVs on cue times and writes `score.wav` |
 | `references/README.md` | How to fetch the optional prompt and motion references |
 | `films/<slug>/` | One folder per film (gitignored) |

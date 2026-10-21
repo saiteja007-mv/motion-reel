@@ -23,7 +23,7 @@ brief ──> shot list ──> stills ──> animatic ──> animation ──
 | Engine | HyperFrames for most films; cinetic for full launch films; video-shotcraft for real-site promos | see table below |
 | Brief | Copies and fills the director's brief, writes the shot list on the beat grid | `briefs/DIRECTOR_BRIEF.md`, `scripts/beats.py` |
 | Build | Stills first, then motion; deterministic, seek-safe, no network at render | the engine's own skill |
-| Sound | earshot effects placed on measured onsets, mastered to -14 / -18 LUFS | `templates/score.py` |
+| Sound | Optional Phonon voiceover first (it sets shot timing), then earshot effects on measured onsets, mastered to -14 / -18 LUFS | `scripts/phonon_say.py`, `templates/score.py` |
 | Critique | Contact sheet + phone-size sheet + strip around the fastest moment, scored 1-10 | `scripts/qa-sheets.*`, `prompts/critique-pass.txt` |
 | Deliver | MP4 master, ProRes 4444 overlay, re-laid-out aspect ratios, poster | |
 
@@ -55,6 +55,7 @@ Install each from its own repo; this kit only orchestrates them.
 | [cinetic](https://github.com/Leonxlnx/cinetic) | Full launch films with brand build, motion blur and a ship gate | MIT |
 | [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) | Remotion promos built from real page screenshots and 2.5D camera moves | Apache-2.0 (Remotion has its own licence terms) |
 | [earshot](https://github.com/Leonxlnx/earshot) | Synthesized sound effects with measured onsets and peaks; set `EARSHOT_PYTHON` to its venv python | MIT |
+| [Phonon](https://github.com/gradium-ai/xn-ptts) (`pip install ptts`) | Optional local voiceover on CPU; set `PHONON_PYTHON`, or use `uv run --with ptts` | MIT/Apache-2.0 code; 31M model Apache-2.0, 40M models CC BY-NC 4.0 |
 | colorfigures | Isometric "how does X work" objects (optional skill) | MIT |
 | [ffmpeg](https://ffmpeg.org) | QA sheets, encoding, loudness | |
 | Python + [librosa](https://librosa.org) | `scripts/beats.py` | |
@@ -73,7 +74,8 @@ Optional references (prompt ideas, motion vocabulary): see [`references/README.m
 | [`prompts/critique-pass.txt`](prompts/critique-pass.txt) | The harsh-director scoring prompt |
 | [`scripts/beats.py`](scripts/beats.py) | `python scripts/beats.py track.wav > beats.json`: bpm, beats, downbeats, hits |
 | [`scripts/qa-sheets.ps1`](scripts/qa-sheets.ps1) / [`.sh`](scripts/qa-sheets.sh) | Contact, phone and strip sheets plus a loop check, into `out/qa/` |
-| [`templates/score.py`](templates/score.py) | Places earshot takes on cue times, writes `score.wav` |
+| [`scripts/phonon_say.py`](scripts/phonon_say.py) | Voiceover lines with Phonon; refuses the non-commercial 40M models by default |
+| [`templates/score.py`](templates/score.py) | Places earshot takes and voiceover WAVs on cue times, writes `score.wav` |
 
 ## Rules worth knowing before you start
 
