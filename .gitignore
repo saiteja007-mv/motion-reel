@@ -1,0 +1,11 @@
+films/
+out/
+node_modules/
+.venv/
+__pycache__/
+*.wav
+*.mp4
+*.mov
+references/*
+!references/README.md
+.env

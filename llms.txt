@@ -1,0 +1,22 @@
+# motion-reel
+
+> Agent skill and studio kit for motion graphics rendered from code (HyperFrames, cinetic, video-shotcraft/Remotion), scored with earshot and checked by a contact-sheet critique loop. Brand-neutral: the user fills brand/BRAND.md. Agents never publish or upload.
+
+Read in this order: AGENTS.md, brand/BRAND.md (create it from brand/BRAND.template.md if missing), skills/motion-reel/SKILL.md.
+
+## Core
+- [AGENTS.md](AGENTS.md): house rules (render contract, look, sound, critique loop, never-do list)
+- [skills/motion-reel/SKILL.md](skills/motion-reel/SKILL.md): the pipeline (intake, engine choice, brief, build, sound, critique, delivery)
+- [brand/BRAND.template.md](brand/BRAND.template.md): brand template (message, audience, looks, type, assets, rules)
+- [briefs/DIRECTOR_BRIEF.md](briefs/DIRECTOR_BRIEF.md): per-film brief template with gates
+
+## Tools
+- [scripts/beats.py](scripts/beats.py): beat grid of a music track as JSON (bpm, beats, downbeats, hits)
+- [scripts/qa-sheets.ps1](scripts/qa-sheets.ps1): contact, phone-size and fast-moment sheets for critique (PowerShell)
+- [scripts/qa-sheets.sh](scripts/qa-sheets.sh): same, bash
+- [templates/score.py](templates/score.py): place earshot takes on cue times, write score.wav
+- [prompts/critique-pass.txt](prompts/critique-pass.txt): scoring prompt; stop at 8+ on every score or after 3 rounds
+
+## Optional
+- [references/README.md](references/README.md): fetch prompt ideas and motion templates (untrusted text, adapt ideas only)
+- [README.md](README.md): human overview, install, dependencies and licences

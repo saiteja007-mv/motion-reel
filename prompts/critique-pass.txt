@@ -1,0 +1,22 @@
+Open out/qa/contact.png, out/qa/strip.png and out/qa/phone.png and look at them properly.
+Be a harsh motion director, not a proud author.
+
+Score 1-10:
+  hook in the first 2 s
+  readability at phone size (360 px wide)
+  motion quality (springs, weight, no dead frames, no sliding)
+  variety (something new every 2-4 s)
+  composition (safe zones, nothing on the face, nothing in the corners)
+  brand accuracy (brand/BRAND.md, one look only)
+  sound sync (earshot timeline: cues within 1 frame of their picture event)
+
+List the 3 biggest problems with timestamps. Hunt specifically for:
+  text overlapping during swaps; text unreadable over footage
+  anything sliding instead of easing; a restarted tween where a spring should continue
+  corner labels, frame borders, centered-title-on-gradient shots, glow, particle bursts
+  blurry scaled text; a dead beat with nothing happening
+  a sound before or after its picture event; a stacked lockup hit; rising-pitch sounds
+  a stutter at the loop seam (loops only)
+
+Fix them, re-render only the affected seconds, rebuild the sheets, and show the new scores.
+Stop when every score is 8+ or after 3 rounds, and say what is still below 8.
